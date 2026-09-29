@@ -1,0 +1,92 @@
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useDemo } from "@/components/demo/DemoProvider";
+import { Container } from "@/components/ui/Container";
+
+export function Header() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const { state, dispatch } = useDemo();
+  const menuButton = useRef<HTMLButtonElement>(null);
+  return (
+    <header
+      className={`site-header ${pathname !== "/" ? "interior-header" : ""}`}
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && open) {
+          setOpen(false);
+          menuButton.current?.focus();
+        }
+      }}
+    >
+      <Container className="header-inner">
+        <Link
+          href="/"
+          className="brand"
+          aria-label="Rrjeti Rinor Elbasan — Home"
+        >
+          <span className="brand-crop">
+            <Image
+              src="/images/rre-logo.png"
+              alt="RRE"
+              width={140}
+              height={140}
+              priority
+            />
+          </span>
+        </Link>
+        <button
+          ref={menuButton}
+          className="menu-toggle"
+          aria-expanded={open}
+          aria-controls="primary-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? "Mbyll ×" : "Menu ☰"}
+        </button>
+        <nav
+          id="primary-navigation"
+          aria-label="Navigimi kryesor"
+          className={`navigation ${open ? "is-open" : ""}`}
+          onClick={() => setOpen(false)}
+        >
+          <div className="nav-links">
+            {[
+              ["/", "Home"],
+              ["/about", "About"],
+              ["/events", "Events"],
+            ].map(([href, label]) => (
+              <Link
+                key={href}
+                href={href}
+                aria-current={pathname === href ? "page" : undefined}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+          <div className="nav-actions">
+            <Link href="/search">Search</Link>
+            <Link
+              className="login-link"
+              href={state.currentUserId ? "/profile" : "/login"}
+            >
+              {state.currentUserId ? "Profili" : "Log In"}
+            </Link>
+            {state.currentUserId && (
+              <button
+                type="button"
+                className="logout-button"
+                onClick={() => dispatch({ type: "logout" })}
+              >
+                Dil
+              </button>
+            )}
+          </div>
+        </nav>
+      </Container>
+    </header>
+  );
+}

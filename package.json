@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node scripts/test-demo.mjs",
+    "test:routes": "node scripts/smoke-routes.mjs"
   },
   "dependencies": {
     "next": "16.3.6",
