@@ -85,21 +85,15 @@ button {
   display: block;
   flex-shrink: 0;
 }
-.brand-crop {
-  position: relative;
+.brand-logo {
   display: block;
-  width: 102px;
-  height: 48px;
-  overflow: hidden;
-  background: #000;
-}
-.brand-crop img {
-  position: absolute;
   width: 140px;
-  max-width: none;
-  height: 140px;
-  left: -19px;
-  top: -31px;
+}
+.brand-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 .navigation {
   display: flex;
@@ -431,6 +425,12 @@ button {
   gap: 22px;
   font-size: 15px;
 }
+.footer-brand img {
+  width: 84px;
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
 .footer-grid nav {
   display: flex;
   flex-direction: column;
@@ -520,9 +520,8 @@ button {
     height: 78px;
     justify-content: space-between;
   }
-  .brand-crop {
-    transform: scale(0.82);
-    transform-origin: left center;
+  .brand-logo {
+    width: 120px;
   }
   .menu-toggle {
     display: block;
@@ -690,7 +689,7 @@ button {
   }
   .footer-brand img {
     width: 65px;
-    height: 65px;
+    height: auto;
   }
   .footer-info {
     grid-column: 1 / -1;

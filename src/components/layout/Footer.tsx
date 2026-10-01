@@ -7,10 +7,11 @@ export function Footer({ registrationMode = false }: { registrationMode?: boolea
       <Container className="footer-grid">
         <Link href={registrationMode ? "/register" : "/"} className="footer-brand">
           <Image
-            src="/images/rre-logo.png"
-            alt="Rrjeti Rinor Elbasan"
-            width={84}
-            height={84}
+            src="/images/KRE BW.jpeg"
+            alt="Këshilli Rinor Elbasan"
+            width={1254}
+            height={1254}
+            sizes="(max-width: 640px) 65px, 84px"
           />
           <span>
             Zëri yt,

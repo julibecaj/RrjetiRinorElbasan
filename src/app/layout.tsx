@@ -17,7 +17,12 @@ const headingFont = Plus_Jakarta_Sans({
   display: "swap",
 });
 export const metadata: Metadata = {
-  title: "Rrjeti Rinor Elbasan | Zëri yt, Hapësira jote.",
+  title: "Këshilli Rinor Elbasan | Zëri yt, Hapësira jote.",
+  applicationName: "Këshilli Rinor Elbasan",
+  icons: {
+    icon: [{ url: "/images/kre-icon.png", type: "image/png", sizes: "512x512" }],
+    apple: [{ url: "/images/kre-apple-icon.png", type: "image/png", sizes: "180x180" }],
+  },
   description:
     "Hapësira e të rinjve të Elbasanit. Zbulo aktivitete, mundësi edukimi, punësimi dhe vullnetarizmi.",
 };

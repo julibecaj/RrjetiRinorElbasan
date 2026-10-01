@@ -25,14 +25,14 @@ export function Header({ registrationMode = false }: { registrationMode?: boolea
         <Link
           href={registrationMode ? "/register" : "/"}
           className="brand"
-          aria-label={registrationMode ? "Këshilli Rinor Elbasan — Regjistrimi" : "Rrjeti Rinor Elbasan — Home"}
+          aria-label={registrationMode ? "Këshilli Rinor Elbasan — Regjistrimi" : "Këshilli Rinor Elbasan — Kryefaqja"}
         >
-          <span className="brand-crop">
+          <span className="brand-logo">
             <Image
-              src="/images/rre-logo.png"
-              alt="RRE"
-              width={140}
-              height={140}
+              src="/images/KRE WHITE BACK.svg"
+              alt="Këshilli Rinor Elbasan"
+              width={855}
+              height={374}
               priority
             />
           </span>
