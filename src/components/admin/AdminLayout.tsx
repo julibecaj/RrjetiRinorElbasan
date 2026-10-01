@@ -10,6 +10,8 @@ export function AdminLayout({ children }: { children: ReactNode }) {
   const [reset, setReset] = useState(false);
   const [message, setMessage] = useState("");
   const [resetVersion, setResetVersion] = useState(0);
+  // The real registration admin pages have their own server-protected UI.
+  if (path === "/admin/login" || path === "/admin/registrations") return <>{children}</>;
   return (
     <div className="admin-shell">
       <aside className="admin-sidebar">

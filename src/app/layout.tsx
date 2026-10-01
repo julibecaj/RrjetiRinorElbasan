@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
+import { isRegistrationMode } from "@/lib/registration-mode";
 import { DM_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { DemoProvider } from "@/components/demo/DemoProvider";
@@ -19,9 +21,13 @@ export const metadata: Metadata = {
   description:
     "Hapësira e të rinjve të Elbasanit. Zbulo aktivitete, mundësi edukimi, punësimi dhe vullnetarizmi.",
 };
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // Read the server flag at request time so a runtime flag change cannot leave
+  // pre-rendered full-site navigation on the campaign registration page.
+  await connection();
+  const registrationMode = isRegistrationMode();
   return (
     <html lang="sq" className={`${bodyFont.variable} ${headingFont.variable}`}>
       <body>
@@ -29,7 +35,7 @@ export default function RootLayout({
           Kalo te përmbajtja
         </a>
         <DemoProvider>
-          <SiteShell>{children}</SiteShell>
+          <SiteShell registrationMode={registrationMode}>{children}</SiteShell>
         </DemoProvider>
       </body>
     </html>

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useDemo } from "@/components/demo/DemoProvider";
 import { Container } from "@/components/ui/Container";
 
-export function Header() {
+export function Header({ registrationMode = false }: { registrationMode?: boolean }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { state, dispatch } = useDemo();
@@ -23,9 +23,9 @@ export function Header() {
     >
       <Container className="header-inner">
         <Link
-          href="/"
+          href={registrationMode ? "/register" : "/"}
           className="brand"
-          aria-label="Rrjeti Rinor Elbasan — Home"
+          aria-label={registrationMode ? "Këshilli Rinor Elbasan — Regjistrimi" : "Rrjeti Rinor Elbasan — Home"}
         >
           <span className="brand-crop">
             <Image
@@ -37,7 +37,7 @@ export function Header() {
             />
           </span>
         </Link>
-        <button
+        {!registrationMode && <><button
           ref={menuButton}
           className="menu-toggle"
           aria-expanded={open}
@@ -85,7 +85,7 @@ export function Header() {
               </button>
             )}
           </div>
-        </nav>
+        </nav></>}
       </Container>
     </header>
   );
