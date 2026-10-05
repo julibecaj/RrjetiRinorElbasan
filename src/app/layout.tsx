@@ -5,6 +5,7 @@ import { DM_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { DemoProvider } from "@/components/demo/DemoProvider";
 import { SiteShell } from "@/components/layout/SiteShell";
+import { Analytics } from "@vercel/analytics/next";
 
 const bodyFont = DM_Sans({
   variable: "--font-dm-sans",
@@ -20,8 +21,16 @@ export const metadata: Metadata = {
   title: "Këshilli Rinor Elbasan | Zëri yt, Hapësira jote.",
   applicationName: "Këshilli Rinor Elbasan",
   icons: {
-    icon: [{ url: "/images/kre-icon.png", type: "image/png", sizes: "512x512" }],
-    apple: [{ url: "/images/kre-apple-icon.png", type: "image/png", sizes: "180x180" }],
+    icon: [
+      { url: "/images/kre-icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [
+      {
+        url: "/images/kre-apple-icon.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
   },
   description:
     "Hapësira e të rinjve të Elbasanit. Zbulo aktivitete, mundësi edukimi, punësimi dhe vullnetarizmi.",
@@ -42,6 +51,7 @@ export default async function RootLayout({
         <DemoProvider>
           <SiteShell registrationMode={registrationMode}>{children}</SiteShell>
         </DemoProvider>
+        <Analytics />
       </body>
     </html>
   );
