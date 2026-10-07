@@ -15,7 +15,7 @@ export const registrationFields = [
   { name: "lastName", label: "Mbiemër", maxLength: 60, type: "text", autoComplete: "family-name" },
   { name: "phone", label: "Numër Telefoni", maxLength: 30, type: "tel", autoComplete: "tel" },
   { name: "email", label: "Email", maxLength: 254, type: "email", autoComplete: "email" },
-  { name: "school", label: "Shkolla", maxLength: 150, type: "text", autoComplete: "off" },
+  { name: "school", label: "Shkolla/Universiteti", maxLength: 150, type: "text", autoComplete: "off" },
   { name: "neighborhoodArea", label: "Lagja/Zona", maxLength: 2000, type: "text", autoComplete: "off" },
   { name: "age", label: "Mosha", maxLength: 10, type: "number", autoComplete: "off" },
   { name: "hobbies", label: "Hobi", maxLength: 500, type: "text", autoComplete: "off" },
