@@ -151,7 +151,7 @@ export function RegistrationForm() {
             <h1 id="registration-title">Bëhu pjesë e Këshillit Rinor</h1>
             <p>Zëri yt. Idetë e tua. Një komunitet që ndërtojmë së bashku.</p>
             <p id="registration-required" className={styles.help}>
-              Të gjitha fushat janë të detyrueshme. Nuk nevojitet llogari apo
+              Email është opsional. Fushat e tjera janë të detyrueshme. Nuk nevojitet llogari apo
               fjalëkalim.
             </p>
             <form
@@ -169,7 +169,7 @@ export function RegistrationForm() {
                   const shared = {
                     id: `registration-${field.name}`,
                     name: field.name,
-                    required: true,
+                    required: field.name !== "email",
                     maxLength: field.maxLength,
                     autoComplete: field.autoComplete,
                     readOnly: status === "submitting",
@@ -187,11 +187,11 @@ export function RegistrationForm() {
                           : undefined
                       }
                     >
-                      <label htmlFor={shared.id}>{field.label}</label>
+                      <label htmlFor={shared.id}>{field.label}{field.name === "email" ? " (opsional)" : ""}</label>
                       {field.type === "textarea" ? (
                         <textarea {...shared} rows={5} />
                       ) : (
-                        <input {...shared} type={field.type} />
+                        <input {...shared} type={field.type} min={field.name === "age" ? 1 : undefined} step={field.name === "age" ? 1 : undefined} />
                       )}
                       {error && (
                         <p id={`${field.name}-error`} className={styles.error}>

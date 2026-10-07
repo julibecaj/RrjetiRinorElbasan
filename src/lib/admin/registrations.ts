@@ -34,7 +34,7 @@ export async function getAdminRegistrations(search: string, page: number) {
     const client = createSupabaseServerClient();
     const offset = (currentPage - 1) * ADMIN_PAGE_SIZE;
     let rows = client.from("registrations")
-      .select("id,first_name,last_name,phone,email,school,class_year,board,hobbies,motivation,created_at", { count: "exact" })
+      .select("id,first_name,last_name,phone,email,school,class_year,board,neighborhood_area,age,hobbies,motivation,created_at", { count: "exact" })
       .order("created_at", { ascending: false })
       .order("id", { ascending: false })
       .range(offset, offset + ADMIN_PAGE_SIZE - 1);

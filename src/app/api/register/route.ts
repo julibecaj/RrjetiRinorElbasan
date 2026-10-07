@@ -51,8 +51,10 @@ export async function POST(request: Request) {
         phone: registration.phone,
         email: registration.email,
         school: registration.school,
-        class_year: registration.classYear,
-        board: registration.board,
+        class_year: null,
+        board: null,
+        neighborhood_area: registration.neighborhoodArea,
+        age: registration.age,
         hobbies: registration.hobbies,
         motivation: registration.motivation,
       })

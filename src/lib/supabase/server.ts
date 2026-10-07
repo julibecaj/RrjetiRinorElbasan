@@ -6,10 +6,12 @@ type RegistrationRow = {
   first_name: string;
   last_name: string;
   phone: string;
-  email: string;
+  email: string | null;
   school: string;
-  class_year: string;
-  board: string;
+  class_year: string | null;
+  board: string | null;
+  neighborhood_area: string | null;
+  age: number | null;
   hobbies: string;
   motivation: string;
   created_at: string;

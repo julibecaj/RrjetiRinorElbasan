@@ -25,10 +25,10 @@ export function AdminRegistrationsTable({ initial }: { initial: AdminRegistratio
         <p id="table-help" className="help-text">Në ekran të vogël, lëviz tabelën horizontalisht. Ora lokale: Elbasan.</p>
         <div className={`table-wrap ${styles.table}`} tabIndex={0} role="region" aria-label="Tabela e regjistrimeve" aria-describedby="table-help">
           <table><caption className={styles.caption}>Regjistrimet e studentëve</caption>
-            <thead><tr>{["Emër", "Mbiemër", "Numër Telefoni", "Email", "Shkolla", "Klasa / Viti", "Bordi", "Hobi", "Pse do të jesh pjesë e Këshillit Rinor?", "Data e regjistrimit"].map((label) => <th scope="col" key={label}>{label}</th>)}</tr></thead>
+            <thead><tr>{["Emër", "Mbiemër", "Numër Telefoni", "Email", "Shkolla", "Klasa / Viti", "Bordi", "Lagja/Zona", "Mosha", "Hobi", "Pse do të jesh pjesë e Këshillit Rinor?", "Data e regjistrimit"].map((label) => <th scope="col" key={label}>{label}</th>)}</tr></thead>
             <tbody>{result.rows.map((row) => <tr key={row.id}>
-              <td>{row.first_name}</td><td>{row.last_name}</td><td>{row.phone}</td><td>{row.email}</td>
-              <td>{row.school}</td><td>{row.class_year}</td><td>{row.board}</td><td className={styles.long}>{row.hobbies}</td>
+              <td>{row.first_name}</td><td>{row.last_name}</td><td>{row.phone}</td><td>{row.email || "—"}</td>
+              <td>{row.school}</td><td>{row.class_year || "—"}</td><td>{row.board || "—"}</td><td>{row.neighborhood_area || "—"}</td><td>{row.age ?? "—"}</td><td className={styles.long}>{row.hobbies}</td>
               <td className={styles.long}>{row.motivation}</td><td><time dateTime={row.created_at}>{row.created_at_display}</time></td>
             </tr>)}</tbody>
           </table>
